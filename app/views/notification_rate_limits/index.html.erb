@@ -1,0 +1,29 @@
+<h1>Notification Rate Limits</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Notification Type</th>
+      <th>Limit</th>
+      <th>Period</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @notification_rate_limits.each do |notification_rate_limit| %>
+      <tr>
+        <td><%= notification_rate_limit.notification_type %></td>
+        <td><%= notification_rate_limit.limit %></td>
+        <td><%= notification_rate_limit.period %></td>
+        <td><%= link_to 'Show', notification_rate_limit %></td>
+        <td><%= link_to 'Edit', edit_notification_rate_limit_path(notification_rate_limit) %></td>
+        <td><%= link_to 'Destroy', notification_rate_limit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Notification Rate Limit', new_notification_rate_limit_path %>

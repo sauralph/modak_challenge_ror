@@ -1,0 +1,17 @@
+<p>
+  <strong>Notification Type:</strong>
+  <%= @notification_rate_limit.notification_type %>
+</p>
+
+<p>
+  <strong>Limit:</strong>
+  <%= @notification_rate_limit.limit %>
+</p>
+
+<p>
+  <strong>Period:</strong>
+  <%= @notification_rate_limit.period %>
+</p>
+
+<%= link_to 'Edit', edit_notification_rate_limit_path(@notification_rate_limit) %> |
+<%= link_to 'Back', notification_rate_limits_path %>
