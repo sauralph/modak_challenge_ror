@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_08_08_165317) do
+ActiveRecord::Schema.define(version: 2024_08_08_185903) do
 
   create_table "notification_rate_limits", force: :cascade do |t|
     t.string "notification_type"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2024_08_08_165317) do
     t.datetime "sent_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "body"
   end
 
 end
