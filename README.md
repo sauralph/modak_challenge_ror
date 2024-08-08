@@ -2,6 +2,28 @@
 
 This is a Rails application that manages notifications with rate-limiting capabilities. It supports both HTML and JSON responses, allowing for easy integration with other services.
 
+## Quick Start
+
+```sh
+docker-compose up --build -d
+```
+### Create a Notification via JSON API
+
+```bash
+curl -X POST http://localhost:3000/notifications.json -d '{"notification": {"recipient":"user@example.com", "notification_type":"status", "body":"This is a test notification."}}' -H "Content-Type: application/json" -H "Accept: application/json"
+
+curl -H "Accept: application/json" http://localhost:3000/notifications.json
+
+curl -H "Accept: application/json" http://localhost:3000/notifications/1.json
+
+curl -X PUT http://localhost:3000/notifications/1.json -d '{"notification": {"body":"Updated body text"}}' -H "Content-Type: application/json" -H "Accept: application/json"
+curl -X DELETE -H "Accept: application/json" http://localhost:3000/notifications/1.json
+```
+### Access via browser
+
+`localhost:3000`
+
+
 ## Setup
 
 ### Prerequisites

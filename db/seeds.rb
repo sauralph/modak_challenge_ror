@@ -5,6 +5,17 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-NotificationRateLimit.create!(notification_type: 'status', limit: 2, period: 1.minute.to_i)
-NotificationRateLimit.create!(notification_type: 'news', limit: 1, period: 1.day.to_i)
-NotificationRateLimit.create!(notification_type: 'marketing', limit: 3, period: 1.hour.to_i)
+NotificationRateLimit.find_or_create_by!(notification_type: 'status') do |nrl|
+  nrl.limit = 2
+  nrl.period = 1.minute.to_i
+end
+
+NotificationRateLimit.find_or_create_by!(notification_type: 'news') do |nrl|
+  nrl.limit = 1
+  nrl.period = 1.day.to_i
+end
+
+NotificationRateLimit.find_or_create_by!(notification_type: 'marketing') do |nrl|
+  nrl.limit = 3
+  nrl.period = 1.hour.to_i
+end
