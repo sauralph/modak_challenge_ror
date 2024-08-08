@@ -1,0 +1,19 @@
+<h1>Notification</h1>
+
+<p>
+  <strong>Notification Type:</strong>
+  <%= @notification.notification_type %>
+</p>
+
+<p>
+  <strong>Recipient:</strong>
+  <%= @notification.recipient %>
+</p>
+
+<p>
+  <strong>Sent At:</strong>
+  <%= @notification.sent_at %>
+</p>
+
+<%= link_to 'Edit', edit_notification_path(@notification) %> |
+<%= link_to 'Back', notifications_path %>

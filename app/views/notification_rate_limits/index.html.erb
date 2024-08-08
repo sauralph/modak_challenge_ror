@@ -14,8 +14,8 @@
     <% @notification_rate_limits.each do |notification_rate_limit| %>
       <tr>
         <td><%= notification_rate_limit.notification_type %></td>
-        <td><%= notification_rate_limit.limit %></td>
-        <td><%= notification_rate_limit.period %></td>
+        <td><%= "#{notification_rate_limit.limit} message#{'s' unless notification_rate_limit.limit == 1}" %></td>
+        <td><%= "#{notification_rate_limit.period} second#{'s' unless notification_rate_limit.period == 1}" %></td>
         <td><%= link_to 'Show', notification_rate_limit, class: 'actions' %></td>
         <td><%= link_to 'Edit', edit_notification_rate_limit_path(notification_rate_limit), class: 'actions' %></td>
         <td><%= link_to 'Destroy', notification_rate_limit, method: :delete, data: { confirm: 'Are you sure?' }, class: 'actions' %></td>

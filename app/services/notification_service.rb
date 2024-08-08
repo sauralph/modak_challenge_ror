@@ -10,9 +10,7 @@ class NotificationService
     if rate_limited?
       raise "Rate limit exceeded for #{@notification_type} notifications to #{@recipient}"
     else
-      # Your logic to send the email notification
       Notification.create!(notification_type: @notification_type, recipient: @recipient, sent_at: Time.current)
-      puts "Notification sent to #{@recipient}"
     end
   end
 
