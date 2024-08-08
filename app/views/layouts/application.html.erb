@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RateLimit</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Rate Limit</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,6 +10,12 @@
   </head>
 
   <body>
+    <nav>
+      <%= link_to 'Home', root_path %> |
+      <%= link_to 'Notifications', notifications_path %> |
+      <%= link_to 'Rate Limits', notification_rate_limits_path %>
+    </nav>
+
     <%= yield %>
   </body>
 </html>

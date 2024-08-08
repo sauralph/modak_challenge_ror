@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :notification_type %>
-    <%= form.text_field :notification_type %>
+    <%= form.select :notification_type, options_for_select(['status', 'news', 'marketing'], notification.notification_type) %>
   </div>
 
   <div class="field">
