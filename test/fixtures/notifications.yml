@@ -1,0 +1,9 @@
+one:
+  notification_type: status
+  recipient: user@example.com
+  sent_at: <%= Time.current %>
+
+two:
+  notification_type: status
+  recipient: user@example.com
+  sent_at: <%= 1.minute.ago %>

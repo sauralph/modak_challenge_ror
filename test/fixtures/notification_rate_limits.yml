@@ -1,0 +1,9 @@
+status_limit:
+  notification_type: status
+  limit: 2
+  period: <%= 1.minute.to_i %>
+
+news_limit:
+  notification_type: news
+  limit: 1
+  period: <%= 1.day.to_i %>
