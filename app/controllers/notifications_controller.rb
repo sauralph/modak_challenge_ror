@@ -1,13 +1,22 @@
 class NotificationsController < ApplicationController
+  protect_from_forgery unless: -> { request.format.json? }
   before_action :set_notification, only: [:show, :edit, :update, :destroy]
   before_action :set_notification_types, only: [:new, :edit, :create, :update]
 
-
   def index
     @notifications = Notification.all
+
+    respond_to do |format|
+      format.html # renders index.html.erb
+      format.json { render json: @notifications }
+    end
   end
 
   def show
+    respond_to do |format|
+      format.html # renders show.html.erb
+      format.json { render json: @notification }
+    end
   end
 
   def new
@@ -25,25 +34,40 @@ class NotificationsController < ApplicationController
 
     begin
       service.send_notification
-      redirect_to notifications_path, notice: 'Notification sent successfully.'
+      respond_to do |format|
+        format.html { redirect_to notifications_path, notice: 'Notification sent successfully.' }
+        format.json { render json: { message: 'Notification sent successfully' }, status: :created }
+      end
     rescue => e
       @notification = Notification.new(notification_params)
       @notification.errors.add(:base, e.message)
-      render :new
+      respond_to do |format|
+        format.html { render :new }
+        format.json { render json: { error: e.message }, status: :unprocessable_entity }
+      end
     end
   end
 
   def update
     if @notification.update(notification_params)
-      redirect_to @notification, notice: 'Notification updated successfully.'
+      respond_to do |format|
+        format.html { redirect_to @notification, notice: 'Notification updated successfully.' }
+        format.json { render json: { message: 'Notification updated successfully' }, status: :ok }
+      end
     else
-      render :edit
+      respond_to do |format|
+        format.html { render :edit }
+        format.json { render json: @notification.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   def destroy
     @notification.destroy
-    redirect_to notifications_url, notice: 'Notification deleted successfully.'
+    respond_to do |format|
+      format.html { redirect_to notifications_url, notice: 'Notification deleted successfully.' }
+      format.json { render json: { message: 'Notification deleted successfully' }, status: :ok }
+    end
   end
 
   private
@@ -51,7 +75,10 @@ class NotificationsController < ApplicationController
   def set_notification
     @notification = Notification.find(params[:id])
   rescue ActiveRecord::RecordNotFound
-    redirect_to notifications_url, alert: 'Notification not found.'
+    respond_to do |format|
+      format.html { redirect_to notifications_url, alert: 'Notification not found.' }
+      format.json { render json: { error: 'Notification not found' }, status: :not_found }
+    end
   end
 
   def set_notification_types
