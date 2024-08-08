@@ -1,5 +1,7 @@
 class NotificationsController < ApplicationController
   before_action :set_notification, only: [:show, :edit, :update, :destroy]
+  before_action :set_notification_types, only: [:new, :edit, :create, :update]
+
 
   def index
     @notifications = Notification.all
@@ -50,6 +52,10 @@ class NotificationsController < ApplicationController
     @notification = Notification.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     redirect_to notifications_url, alert: 'Notification not found.'
+  end
+
+  def set_notification_types
+    @notification_types = NotificationRateLimit.pluck(:notification_type).uniq
   end
 
   def notification_params
