@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2024_08_08_185903) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "notification_rate_limits", force: :cascade do |t|
     t.string "notification_type"
     t.integer "limit"
