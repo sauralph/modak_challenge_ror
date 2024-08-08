@@ -1,3 +1,5 @@
+<h1>Notification Rate Limit</h1>
+
 <p>
   <strong>Notification Type:</strong>
   <%= @notification_rate_limit.notification_type %>
@@ -13,5 +15,7 @@
   <%= @notification_rate_limit.period %>
 </p>
 
-<%= link_to 'Edit', edit_notification_rate_limit_path(@notification_rate_limit) %> |
-<%= link_to 'Back', notification_rate_limits_path %>
+<div class="actions">
+  <%= link_to 'Edit', edit_notification_rate_limit_path(@notification_rate_limit), class: 'actions' %> |
+  <%= link_to 'Back', notification_rate_limits_path, class: 'actions' %>
+</div>

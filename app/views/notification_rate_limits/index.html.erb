@@ -16,14 +16,14 @@
         <td><%= notification_rate_limit.notification_type %></td>
         <td><%= notification_rate_limit.limit %></td>
         <td><%= notification_rate_limit.period %></td>
-        <td><%= link_to 'Show', notification_rate_limit %></td>
-        <td><%= link_to 'Edit', edit_notification_rate_limit_path(notification_rate_limit) %></td>
-        <td><%= link_to 'Destroy', notification_rate_limit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', notification_rate_limit, class: 'actions' %></td>
+        <td><%= link_to 'Edit', edit_notification_rate_limit_path(notification_rate_limit), class: 'actions' %></td>
+        <td><%= link_to 'Destroy', notification_rate_limit, method: :delete, data: { confirm: 'Are you sure?' }, class: 'actions' %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Notification Rate Limit', new_notification_rate_limit_path %>
+<div class="actions">
+  <%= link_to 'New Notification Rate Limit', new_notification_rate_limit_path, class: 'actions' %>
+</div>
