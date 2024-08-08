@@ -23,6 +23,11 @@ curl -X DELETE -H "Accept: application/json" http://localhost:3000/notifications
 
 `localhost:3000`
 
+### Running unit test
+```sh
+docker-compose run test
+```
+
 
 ## Setup
 

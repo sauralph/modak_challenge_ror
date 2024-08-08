@@ -23,5 +23,15 @@ services:
       DATABASE_URL: postgres://postgres:password@db:5432/myapp_development
     entrypoint: ["bash", "-c", "bundle exec rails db:create db:migrate db:seed && bundle exec rails server -b 0.0.0.0"]
 
+  test:
+    build: .
+    command: ["bash", "-c", "bundle exec rails db:create db:migrate db:seed && bundle exec rails test"]
+    volumes:
+      - .:/myapp
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://postgres:password@db:5432/myapp_test
+
 volumes:
   postgres_data:
